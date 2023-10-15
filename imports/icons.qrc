@@ -1,0 +1,36 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>icons/Accept.svg</file>
+        <file>icons/Calendar.svg</file>
+        <file>icons/Calendar_Dark.svg</file>
+        <file>icons/City.svg</file>
+        <file>icons/City_Dark.svg</file>
+        <file>icons/Close.svg</file>
+        <file>icons/Close_Dark.svg</file>
+        <file>icons/Favourite.svg</file>
+        <file>icons/Favourite_Dark.svg</file>
+        <file alias="icons">icons/Favourite_Dark_Selected.svg</file>
+        <file>icons/Home.svg</file>
+        <file>icons/Home_Dark.svg</file>
+        <file>icons/Home_Dark_Selected.svg</file>
+        <file>icons/List.svg</file>
+        <file>icons/List_Dark.svg</file>
+        <file>icons/More.svg</file>
+        <file>icons/More_Dark.svg</file>
+        <file>icons/Search.svg</file>
+        <file>icons/Search_Dark.svg</file>
+        <file>icons/Search_Dark_Selected.svg</file>
+        <file>icons/SearchMore.svg</file>
+        <file>icons/SearchMore_Dark.svg</file>
+        <file>icons/Settings.svg</file>
+        <file>icons/Settings_Dark.svg</file>
+        <file>icons/Text.svg</file>
+        <file>icons/Text_Dark.svg</file>
+        <file>ProjectSamples/Constants.qml</file>
+        <file>icons/Previous.svg</file>
+        <file>icons/Ticket.svg</file>
+        <file>icons/Ticket_Free.svg</file>
+        <file>icons/Time.svg</file>
+        <file>icons/Map.svg</file>
+    </qresource>
+</RCC>
