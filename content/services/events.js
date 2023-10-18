@@ -26,11 +26,12 @@ function getEvents(parametersObj) {
 
 function getEventById(id) {
     const lang = 'ru'
-    const expand = 'images,dates,location'
+    const expand = 'images,dates,location,place'
     const text_format = 'plain'
 
+    console.log(id)
+
     const query = API_TOOLS.buildQueryParametersString({lang, expand, text_format})
-    console.log(id, query)
 
     API_TOOLS.sendRequest(
         `events/${id}${query}`,

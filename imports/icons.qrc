@@ -32,5 +32,8 @@
         <file>icons/Ticket_Free.svg</file>
         <file>icons/Time.svg</file>
         <file>icons/Map.svg</file>
+        <file>icons/Age.svg</file>
+        <file>icons/Cost.svg</file>
+        <file>icons/Link.svg</file>
     </qresource>
 </RCC>

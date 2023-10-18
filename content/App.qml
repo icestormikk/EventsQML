@@ -28,8 +28,6 @@ ApplicationWindow {
         initialItem: SearchPage {}
     }
 
-    Component.onCompleted: {
-        console.log(EventsStore.selectedEvent)
-    }
+    ModalWindow {}
 }
 

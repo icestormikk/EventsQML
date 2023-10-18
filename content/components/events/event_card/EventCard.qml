@@ -21,6 +21,10 @@ Item {
         }
 
         IconButton {
+            anchors {
+                left: parent.left
+            }
+
             size: 40
             url: Constants.getIcon('Previous', false)
             bgColor: Qt.rgba(255, 255, 255, 0.5)
@@ -29,6 +33,21 @@ Item {
             onButtonClicked: () => {
                 pages_stack.pop()
                 EventsStore.selectedEvent = undefined
+            }
+        }
+
+        IconButton {
+            anchors {
+                right: parent.right
+            }
+
+            size: 40
+            url: Constants.getIcon('Favourite_Selected', false)
+            bgColor: Qt.rgba(255, 255, 255, 0.5)
+            radius: 4
+
+            onButtonClicked: () => {
+                console.log('Add to favourite')
             }
         }
     }

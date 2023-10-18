@@ -48,14 +48,14 @@ Rectangle {
                     },
                     {
                         title: 'Локация',
-                        element: 'EventMapPlace.qml',
+                        element: 'event_location/EventMapPlace.qml',
                         properties: {
-                            eventLocationData: eventData['location']
+                            eventLocationData: { location: eventData['location'], place: eventData['place'] }
                         }
                     },
                     {
                         title: 'Доп. информация',
-                        element: 'EventMapPlace.qml',
+                        element: 'EventAdditionalAttributes.qml',
                         properties: {}
                     }
 

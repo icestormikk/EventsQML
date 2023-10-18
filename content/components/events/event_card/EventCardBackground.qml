@@ -22,8 +22,7 @@ SwipeView {
             autoTransform: true
 
             onStatusChanged: {
-                if (image.status === Image.Ready) {
-                    console.log(image.paintedHeight, Constants.height / 2)
+                if (image.status === Image.Ready && index === 0) {
                     if (Constants.height / 2.5 < image.paintedHeight) {
                         swiper.height = Constants.height / 2.5
                         image.fillMode = Image.PreserveAspectCrop
