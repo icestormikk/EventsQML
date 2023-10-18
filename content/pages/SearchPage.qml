@@ -3,6 +3,7 @@ import QtQuick.Controls
 import ProjectSamples
 import '../components/events'
 import '../components/search_widget'
+import '../components'
 
 Page {
     id: search_page
@@ -15,9 +16,19 @@ Page {
     header: Item {
         id: search_header
         width: parent.width
-        height: 80
+        height: 60
 
-        SearchWidget {}
+        ClosedSearchList {
+            anchors {
+                fill: parent
+                margins: 10
+            }
+
+            onClick: () => {
+                popup_window.content = Qt.resolvedUrl('../components/search_widget/SearchWidget.qml')
+                popup_window.open()
+            }
+        }
 
         Behavior on height {
             NumberAnimation { duration: 500 }

@@ -7,8 +7,15 @@ import QtQuick.Controls
 import './components/search_widget'
 import './components/'
 import './pages'
+import './storage'
 
 ApplicationWindow {
+    id: app_window
+
+    EventsDatabaseService {
+        id: events_service
+    }
+
     width: Constants.width
     height: Constants.height
 
@@ -28,6 +35,9 @@ ApplicationWindow {
         initialItem: SearchPage {}
     }
 
-    ModalWindow {}
+    CustomPopup {
+        id: popup_window
+        visible: false
+    }
 }
 

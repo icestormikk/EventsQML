@@ -25,13 +25,13 @@ Page {
                 id: 'age',
                 title: 'Возрастное органичение',
                 icon: Constants.getIcon('Age', false),
-                value: `${selectedEventData['age_restriction']}`
+                value: selectedEventData['age_restriction'] || 0
             },
             {
                 id: 'site',
                 title: 'Ссылка на сайт',
                 icon: Constants.getIcon('Link', false),
-                value: selectedEventData['site_url']
+                value: selectedEventData['site_url'] || 'Отсутствует'
             }
         ]
     }
@@ -51,7 +51,7 @@ Page {
             delegate: Item {
                 id: attribute
                 width: attributes_container.width
-                height: 30
+                height: Math.max(value.height, 30)
 
                 Row {
                     anchors.fill: parent
@@ -60,7 +60,7 @@ Page {
                     Icon {
                         id: attribute_icon
                         anchors.verticalCenter: parent.verticalCenter
-                        width: attribute.height
+                        width: 30
                         height: width
                         iconUrl: modelData['icon']
                     }

@@ -7,14 +7,9 @@ import '../../services/events.js' as EventsTools
 
 Item {
     id: search_list_container
-    anchors {
-        fill: parent
-        margins: 20
-    }
+    width: parent.width
+    height: widget_container.height
 
-    height: isOpen ? Screen.height : parent.height
-
-    property bool isOpen: false
     property QtObject parameters: QtObject {
         property var city
         property date eventDate: new Date()
@@ -47,35 +42,25 @@ Item {
         }
     }
 
-    ClosedSearchList {
-        visible: !isOpen
-
-        onClick: () => {
-            isOpen = !isOpen
-        }
-    }
-
     Item {
+        id: widget_container
         width: parent.width
-        visible: isOpen
-        height: isOpen ? (search_page.height - search_list_container.anchors.margins * 2) : 60
+        height: 600
 
         SwipeView {
             id: search_list
-            z: 1
-            visible: isOpen
-
             anchors {
                 fill: parent
             }
             currentIndex: 0
             spacing: 10
             interactive: false
+            clip: true
 
             SearchItem {
                 id: city_parameter
                 title: 'Выбор города'
-                description: 'blablablablablablablablablablablablablablablablablabla'
+                description: 'Для начала давайте определимся с городом, где будет проходить мероприятие'
                 content: CitiesBlock {
                     id: city
 
@@ -87,7 +72,7 @@ Item {
             SearchItem {
                 id: date_parameter
                 title: 'Дата проведения'
-                description: 'blablablablablablablablablablablablablablablablablabla'
+                description: 'Отлично! Теперь отфильтруем события по дате'
                 content: CalendarBlock {
                     id: calendar
 
@@ -99,7 +84,7 @@ Item {
             SearchItem {
                 id: category_parameter
                 title: 'Категория'
-                description: 'blablablablablablablablablablablablablablablablablabla'
+                description: 'Теперь нужно определиться с типом меропрятия: концерт, выставка, а может сходим на квест?'
                 content: CategoriesBlock {
                     id: categories
 
@@ -111,7 +96,7 @@ Item {
             SearchItem {
                 id: title_parameter
                 title: 'Название'
-                description: 'blablablablablablablablablablablablablablablablablabla'
+                description: 'Ну и последний штрих - если вам известно название мероприятия, укажите его'
                 content: TitleBlock {
                     id: title
 
@@ -130,14 +115,13 @@ Item {
                 }
                 onSubmit: () => {
                     EventsTools.getEvents(parameters.toJsObject())
-                    isOpen = false
+                    popup_window.close()
                 }
             }
         }
 
         PageIndicator {
             id: indicator
-            visible: isOpen
 
             count: search_list.count
             currentIndex: search_list.currentIndex

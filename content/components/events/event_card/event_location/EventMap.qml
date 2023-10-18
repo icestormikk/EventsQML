@@ -65,5 +65,14 @@ Item {
             sequence: StandardKey.ZoomOut
             onActivated: map.zoomLevel = Math.round(map.zoomLevel - 1)
         }
+
+        MapCircle {
+            center: QtPositioning.coordinate(
+                coordinates['lat'], coordinates['lon']
+            )
+            radius: 10.0
+            color: 'red'
+            border.width: 1
+        }
     }
 }

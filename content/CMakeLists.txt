@@ -18,5 +18,5 @@ qt6_add_qml_module(content
         QML_FILES components/events/EventShortCard.qml
         QML_FILES components/events/EventCard.qml
         QML_FILES pages/EventPage.qml
-        QML_FILES components/ModalWindow.qml
+        QML_FILES components/CustomPopup.qml
 )

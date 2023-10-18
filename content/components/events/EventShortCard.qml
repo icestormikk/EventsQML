@@ -45,9 +45,9 @@ Rectangle {
             }
             Text {
                 id: event_publication_date
-                text: Qt.formatDate(new Date(modelData['publication_date'] * 1000), 'dd.MM.yyyy')
+                text: modelData['short_title']
                 font {
-                    pointSize: title.font.pointSize * 0.8
+                    pointSize: title.font.pointSize * 0.9
                 }
                 opacity: 0.6
                 wrapMode: title.wrapMode

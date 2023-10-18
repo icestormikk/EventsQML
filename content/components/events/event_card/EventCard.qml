@@ -37,17 +37,26 @@ Item {
         }
 
         IconButton {
+            id: favourite_button
             anchors {
                 right: parent.right
             }
 
+            property bool isFavouriteEvent: Boolean(events_service.getEventById(eventData['id']))
+
             size: 40
-            url: Constants.getIcon('Favourite_Selected', false)
+            url: Constants.getIcon('Favourite' + (isFavouriteEvent ? '_Selected' : ''), false)
             bgColor: Qt.rgba(255, 255, 255, 0.5)
             radius: 4
 
             onButtonClicked: () => {
-                console.log('Add to favourite')
+                try {
+                    events_service.createEvent(eventData)
+                    isFavouriteEvent = true
+                } catch (err) {
+                    isFavouriteEvent = false
+                    throw err
+                }
             }
         }
     }

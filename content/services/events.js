@@ -6,9 +6,10 @@ function getEvents(parametersObj) {
     const actual_since = parametersObj['actual_since'].value.toISOString()
     const category = parametersObj['category'].value.slug
     const title = parametersObj['title'].value
-    const fields = 'id,title,slug,is_free,publication_date'
+    const fields = 'id,title,slug,is_free,short_title'
 
     const query = API_TOOLS.buildQueryParametersString({loc, actual_since, category, title, fields})
+    console.log(query)
 
     Stores.EventsStore.events.isLoading = true
 

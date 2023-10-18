@@ -2,15 +2,27 @@ import QtQuick 2.15
 import QtQuick.Controls
 
 Button {
-    id: submit_button
-
+    id: accept_button
     width: parent.width
     height: parent.height
-    text: 'Применить'
+
+    property alias labelText: label.text
+    property alias labelColor: label.color
+
+    contentItem: Text {
+        id: label
+        text: 'Применить'
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        font {
+            pointSize: 12
+            bold: true
+        }
+    }
 
     background: Rectangle {
         anchors.fill: parent
-        radius: submit_button.height / 2
+        radius: accept_button.height / 2
         clip: true
         color: 'lightgreen'
     }

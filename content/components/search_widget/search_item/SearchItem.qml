@@ -7,8 +7,6 @@ import '../../../ui/buttons'
 
 Rectangle {
     id: search_item
-    radius: 40
-    clip: true
 
     property alias title: search_item_title.text
     property alias description: search_item_description.text
@@ -29,7 +27,7 @@ Rectangle {
                 fill: parent
                 horizontalCenter: parent.horizontalCenter
             }
-            spacing: 30
+            spacing: 10
 
             Item {
                 width: parent.width
@@ -44,16 +42,6 @@ Rectangle {
                     visible: search_list.currentIndex > 0
                     onClicked: {
                         search_list.decrementCurrentIndex()
-                    }
-                }
-                CancelButton {
-                    anchors {
-                        right: parent.right
-                        verticalCenter: parent.verticalCenter
-                    }
-
-                    onClicked: () => {
-                        search_list_container.isOpen = false
                     }
                 }
             }
@@ -88,7 +76,6 @@ Rectangle {
             height: 40
             anchors {
                 bottom: parent.bottom
-                bottomMargin: 10
                 horizontalCenter: parent.horizontalCenter
             }
 

@@ -6,32 +6,22 @@ import '../../../ui'
 Button {
     id: previous_item_button
 
-    width: 60
-    height: parent.height
+    width: parent.width
+    height: 40
 
-    background: Row {
-        anchors {
-            fill: parent
+    background: Rectangle {
+        anchors.fill: parent
+        color: '#ee7272'
+        radius: 40
+    }
+
+    contentItem: Text {
+        text: 'Вернуться назад'
+        font {
+            bold: true
+            pointSize: 12
         }
-
-        IconButton {
-            id: prev_button
-            anchors.verticalCenter: parent.verticalCenter
-
-            url: Constants.getIcon('Previous')
-            size: parent.height - 10
-        }
-        Item {
-            height: parent.height
-            width: parent.width - prev_button.width
-
-            Text {
-                anchors.verticalCenter: parent.verticalCenter
-                text: 'Назад'
-                font {
-                    pointSize: 12
-                }
-            }
-        }
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
     }
 }
