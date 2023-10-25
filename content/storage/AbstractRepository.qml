@@ -71,6 +71,26 @@ QtObject {
         )
     }
 
+    function update(tableName, newObj, filterQueryString, ...parameters) {
+        if (!connection) {
+            throw new Error('Database is not initialized!')
+        }
+        if (filterQueryString.length === 0) {
+            throw new Error('Filter query string is not initialized!')
+        }
+
+        connection.database.transaction(
+            function (tx) {
+                const newValues = Object.entries(newObj).map(([key, value]) => `${key}=${value}`)
+                const query = `UPDATE ${tableName} SET ${newValues} WHERE ${filterQueryString}`
+                logger.write(query + ` (${parameters.join(', ')})`)
+
+                tx.executeSql(query, [...parameters])
+                logger.write('The object was successfully updated')
+            }
+        )
+    }
+
     function remove(tableName, filterQueryString, ...parameters) {
         if (!connection) {
             throw new Error('Database is not initialized!')

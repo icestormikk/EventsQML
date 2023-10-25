@@ -4,10 +4,11 @@ import QtQuick 6.2
 QtObject {
     property var events: QtObject {
         property bool isLoading: false
+        property int totalCount: 0
         property var items: []
+        property var favouriteItems: []
     }
 
-    property int currentPageIndex: 1
     property var next
     property var previous
     property var selectedEvent

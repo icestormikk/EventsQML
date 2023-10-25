@@ -4,9 +4,15 @@ const DEFAULT_API_VERSION = 'v1.4'
 
 const API_URL = `${ROW_API_URL}/${DEFAULT_API_VERSION}/`
 
-function sendRequest(address, onSuccess = () => {}, onFailed = () => {}, httpMethod = "GET") {
+function sendRequest(
+    address,
+    onSuccess = () => {},
+    onFailed = () => {},
+    httpMethod = "GET"
+) {
     const request = new XMLHttpRequest();
     const url = `${API_URL}/${address}`;
+    console.log(url)
 
     request.onreadystatechange = function() {
         if (request.readyState === XMLHttpRequest.DONE) {

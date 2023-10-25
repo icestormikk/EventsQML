@@ -7,7 +7,7 @@ Page {
     id: event_additional_attributes_page
     objectName: 'eventAdditionalAttributes'
 
-    readonly property var selectedEventData: EventsStore.selectedEvent
+    property var selectedEventData: EventsStore.selectedEvent
 
     function getStaticAdditionalAttributes() {
         if (!selectedEventData) {

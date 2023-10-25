@@ -18,7 +18,20 @@ QtObject {
 
     readonly property color applicationBackgroundColor: '#B3DCFD'
 
+    readonly property string homePageName: 'homePage'
+    readonly property string searchPageName: 'searchPage'
+    readonly property string favouriteEventsPageName: 'favouriteEventsPage'
+    readonly property string eventPageName: 'eventPage'
+    readonly property string todayEventsPageName: 'todayEventsPage'
+    readonly property string newsPageName: 'newsPage'
+    readonly property string compilationsPageName: 'compilationsPage'
+    readonly property string compilationPageName: 'compilationPage'
+
     function getIcon(iconName, addSuffix = true) {
-        return Qt.resolvedUrl(`../icons/${iconName}${activeTheme === Constants.Theme.Dark && addSuffix ? "_Dark.svg" : ".svg"}`)
+        return getImage(`${iconName}${activeTheme === Constants.Theme.Dark && addSuffix ? "_Dark.svg" : ".svg"}`)
+    }
+
+    function getImage(image) {
+        return Qt.resolvedUrl(`../icons/${image}`)
     }
 }

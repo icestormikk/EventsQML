@@ -32,7 +32,7 @@ Page {
         Rectangle {
             id: location_info_container
             width: parent.width
-            height: 60
+            height: 80
             border {
                 width: 1
                 color: 'lightgray'
@@ -45,13 +45,12 @@ Page {
                     fill: parent
                     margins: 10
                 }
-                height: 40
                 spacing: 10
 
                 Icon {
                     id: location_icon
                     anchors.verticalCenter: parent.verticalCenter
-                    width: parent.height - 5
+                    width: 40
                     height: width
                     iconUrl: Constants.getIcon('Map', false)
                 }
@@ -60,10 +59,12 @@ Page {
                     id: location_full_info
                     width: parent.width - location_icon.width
                     height: location_name.height + (isPlaceDefined() ? location_address.height : 0)
+                    anchors.verticalCenter: parent.verticalCenter
 
                     Label {
                         id: location_name
                         width: parent.width
+                        wrapMode: Text.WordWrap
                         text: eventLocationData['location']['name']
                         font {
                             bold: true
@@ -83,6 +84,34 @@ Page {
                         wrapMode: Text.WordWrap
                         opacity: 0.5
                     }
+
+                    states: [
+                        State {
+                            name: "isPlaceDefined"
+                            when: isPlaceDefined()
+                            PropertyChanges {
+                                target: location_name
+                                text: eventLocationData['place']['title'].charAt(0).toUpperCase()
+                                      + eventLocationData['place']['title'].slice(1)
+                            }
+                            PropertyChanges {
+                                target: location_address
+                                visible: true
+                                text: [eventLocationData['location']['name'], eventLocationData['place']['address']].join(', ')
+                            }
+                        },
+                        State {
+                            name: "isPlaceNotDefined"
+                            PropertyChanges {
+                                target: location_name
+                                text: eventLocationData['location']['name']
+                            }
+                            PropertyChanges {
+                                target: location_address
+                                visible: false
+                            }
+                        }
+                    ]
                 }
             }
         }

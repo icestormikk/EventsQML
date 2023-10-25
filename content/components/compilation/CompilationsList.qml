@@ -1,28 +1,18 @@
 import QtQuick 2.15
 import QtQuick.Controls
-import ProjectSamples
-import '../../services/events.js' as EventsTools
-import '../../components'
+import '../../services/compilations.js' as CompilationsTools
 import '../../ui/buttons'
-import '../../ui'
 
 Item {
-    id: events_list_container
     anchors.fill: parent
 
-    required property var events
-
-    readonly property bool isLoading: !Boolean(events)
-
-    property var selectedEvent
+    required property var compilations
+    readonly property bool isLoading: !Boolean(compilations)
     property string nextPageLink
 
     ScrollView {
         id: view
-        anchors {
-            fill: parent
-            bottomMargin: 10
-        }
+        anchors.fill: parent
 
         Column {
             width: view.width
@@ -46,8 +36,8 @@ Item {
                 width: parent.width
                 height: parent.height - load_more_button.height
 
-                model: events
-                delegate: EventShortCard {}
+                model: compilations
+                delegate: CompilationShortCard {}
             }
 
             Item {
@@ -61,7 +51,14 @@ Item {
 
                     onClicked: {
                         load_button.isLoading = true
-                        EventsTools.appendEvents(String(nextPageLink), () => { load_button.isLoading = false })
+                        CompilationsTools.appendCompilations(
+                            String(nextPageLink),
+                            (results, next) => {
+                                compilations = [...compilations, ...results]
+                                nextPageLink = next
+                                load_button.isLoading = false
+                            }
+                        )
                     }
                 }
             }

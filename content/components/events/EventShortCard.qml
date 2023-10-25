@@ -8,7 +8,7 @@ Rectangle {
     width: events_list.width
     height: Math.max(title.height + event_publication_date.height + info_row_block.anchors.margins * 2, event_icon.height)
     color: 'white'
-    radius: 10
+    radius: 6
     clip: true
 
     Row {
@@ -45,14 +45,14 @@ Rectangle {
             }
             Text {
                 id: event_publication_date
-                text: modelData['short_title']
+                text: modelData['short_title'] || modelData['description']
                 font {
                     pointSize: title.font.pointSize * 0.9
                 }
                 opacity: 0.6
-                wrapMode: title.wrapMode
+                wrapMode: modelData['short_title'] ? title.wrapMode : Text.NoWrap
                 elide: title.elide
-                width: title.width
+                width: title.width - 10
             }
         }
     }
@@ -60,8 +60,28 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            EventsTools.getEventById(modelData['id'])
-            pages_stack.push('../../pages/EventPage.qml')
+            if (pages_stack.currentItem.objectName === Constants.favouriteEventsPageName) {
+                pages_stack.push(
+                    '../../pages/EventPage.qml',
+                    { selectedEventData: EventsStore.events.favouriteItems[index] }
+                )
+
+                EventsTools.getEventById(
+                    modelData['id'],
+                    (response) => {
+                        events_service.updateFavouriteEventById(modelData['id'], { data: JSON.stringify(response) })
+                    }
+                )
+                return
+            }
+
+            EventsTools.getEventById(
+                modelData['id'],
+                (response) => {
+                    EventsStore.selectedEvent = response
+                    pages_stack.push('../../pages/EventPage.qml', { selectedEventData: EventsStore.selectedEvent })
+                }
+            )
         }
     }
 }

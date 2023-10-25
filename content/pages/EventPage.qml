@@ -6,9 +6,9 @@ import '../ui/buttons'
 
 Page {
     id: event_page
-    objectName: 'EventPage'
+    objectName: Constants.eventPageName
 
-    property var selectedEventData: EventsStore.selectedEvent
+    property var selectedEventData
 
     background: Rectangle {
         anchors.fill: parent
@@ -26,22 +26,17 @@ Page {
         Column {
             anchors.fill: parent
 
-//            Item {
-//                width: parent.width
-//                height: 40
-
-//                CancelButton {
-//                    onClicked: () => {
-//                        pages_stack.pop()
-//                        EventsStore.selectedEvent = undefined
-//                    }
-//                }
-//            }
-
             Loader {
                 id: card_loader
                 width: event_scroll_view.width
             }
+        }
+
+        BusyIndicator {
+            anchors.centerIn: parent
+            width: parent.width / 2
+            height: width
+            running: card_loader.status !== Loader.Ready
         }
     }
 

@@ -15,6 +15,7 @@ Rectangle {
         anchors {
             fill: parent
         }
+        smooth: true
 
         fillMode: Image.PreserveAspectFit
     }

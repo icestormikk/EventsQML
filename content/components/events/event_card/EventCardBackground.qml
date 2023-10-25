@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls
 import ProjectSamples
+import '../../../services/events.js' as EventsTools
 
 SwipeView {
     id: swiper

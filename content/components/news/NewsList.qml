@@ -1,33 +1,24 @@
 import QtQuick 2.15
 import QtQuick.Controls
-import ProjectSamples
-import '../../services/events.js' as EventsTools
-import '../../components'
+import '../../services/news.js' as NewsTools
 import '../../ui/buttons'
-import '../../ui'
 
 Item {
-    id: events_list_container
+    id: news_container
     anchors.fill: parent
 
-    required property var events
-
-    readonly property bool isLoading: !Boolean(events)
-
-    property var selectedEvent
+    required property var news
+    readonly property bool isLoading: !Boolean(news)
     property string nextPageLink
 
     ScrollView {
         id: view
-        anchors {
-            fill: parent
-            bottomMargin: 10
-        }
+        anchors.fill: parent
 
         Column {
             width: view.width
             height: view.height
-            spacing: 10
+            spacing: 20
 
             Item {
                 visible: isLoading
@@ -46,8 +37,8 @@ Item {
                 width: parent.width
                 height: parent.height - load_more_button.height
 
-                model: events
-                delegate: EventShortCard {}
+                model: news
+                delegate: NewsCard {}
             }
 
             Item {
@@ -61,7 +52,14 @@ Item {
 
                     onClicked: {
                         load_button.isLoading = true
-                        EventsTools.appendEvents(String(nextPageLink), () => { load_button.isLoading = false })
+                        NewsTools.appendNews(
+                            String(nextPageLink),
+                            (results, next) => {
+                                newsData = [...newsData, ...results]
+                                nextPageLink = next
+                                load_button.isLoading = false
+                            }
+                        )
                     }
                 }
             }

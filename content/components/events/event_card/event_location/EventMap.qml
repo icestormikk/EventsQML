@@ -71,7 +71,7 @@ Item {
                 coordinates['lat'], coordinates['lon']
             )
             radius: 10.0
-            color: 'red'
+            color: Qt.rgba(255, 0, 0, 0.2)
             border.width: 1
         }
     }

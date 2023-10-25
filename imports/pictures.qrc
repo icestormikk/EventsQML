@@ -8,18 +8,14 @@
         <file>icons/Close.svg</file>
         <file>icons/Close_Dark.svg</file>
         <file>icons/Favourite.svg</file>
-        <file>icons/Favourite_Dark.svg</file>
-        <file alias="icons">icons/Favourite_Dark_Selected.svg</file>
         <file>icons/Home.svg</file>
         <file>icons/Home_Dark.svg</file>
-        <file>icons/Home_Dark_Selected.svg</file>
         <file>icons/List.svg</file>
         <file>icons/List_Dark.svg</file>
         <file>icons/More.svg</file>
         <file>icons/More_Dark.svg</file>
         <file>icons/Search.svg</file>
         <file>icons/Search_Dark.svg</file>
-        <file>icons/Search_Dark_Selected.svg</file>
         <file>icons/SearchMore.svg</file>
         <file>icons/SearchMore_Dark.svg</file>
         <file>icons/Settings.svg</file>
@@ -35,5 +31,13 @@
         <file>icons/Age.svg</file>
         <file>icons/Cost.svg</file>
         <file>icons/Link.svg</file>
+        <file>icons/KudaGoLogo.svg</file>
+        <file>icons/News.svg</file>
+        <file>icons/Today.svg</file>
+        <file>icons/Group.svg</file>
+        <file>icons/Favourite_Colored.svg</file>
+        <file>icons/WideLogo.png</file>
+        <file>icons/News_Black.svg</file>
+        <file>icons/None.svg</file>
     </qresource>
 </RCC>

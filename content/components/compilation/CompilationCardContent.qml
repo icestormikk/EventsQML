@@ -1,6 +1,5 @@
 import QtQuick 2.15
 import QtQuick.Controls
-import ProjectSamples
 
 Rectangle {
     id: content_block
@@ -12,7 +11,7 @@ Rectangle {
         anchors.fill: parent
 
         Item {
-            id: event_nav_panel
+            id: compilation_nav_panel
             width: parent.width - content_block.radius * 2
             height: content_block.radius * 1.5
             anchors.horizontalCenter: parent.horizontalCenter
@@ -31,36 +30,19 @@ Rectangle {
                 model: [
                     {
                         title: 'Описание',
-                        element: 'EventTitleDescription.qml',
+                        element: 'CompilationInfo.qml',
                         properties: {
-                            eventTitle: eventData['title'].charAt(0).toUpperCase() + eventData['title'].slice(1),
-                            eventDescription: eventData['body_text']
+                            compilationTitle: compilationData['title'].charAt(0).toUpperCase() + compilationData['title'].slice(1),
+                            compilationDescription: compilationData['description']
                         }
                     },
                     {
-                        title: 'Дата и время',
-                        element: 'event_dates/EventDates.qml',
+                        title: `Подборка (${compilationData['items'].length})`,
+                        element: 'CompilationElements.qml',
                         properties: {
-                            eventDates: eventData['dates'].sort((date1, date2) =>
-                                new Date(date2.end * 1000).getTime() - new Date(date1.end * 1000).getTime()
-                            )
-                        }
-                    },
-                    {
-                        title: 'Локация',
-                        element: 'event_location/EventMapPlace.qml',
-                        properties: {
-                            eventLocationData: { location: eventData['location'], place: eventData['place'] }
-                        }
-                    },
-                    {
-                        title: 'Доп. информация',
-                        element: 'EventAdditionalAttributes.qml',
-                        properties: {
-                            selectedEventData: eventData
+                            compilationItems: compilationData['items']
                         }
                     }
-
                 ]
                 delegate: Label {
                     text: modelData['title']
@@ -84,11 +66,11 @@ Rectangle {
         StackView {
             id: event_pages_stack
             width: parent.width
-            height: parent.height - event_nav_panel.height - 40
-            initialItem: EventTitleDescription {
+            height: parent.height - compilation_nav_panel.height
+            initialItem: CompilationInfo {
                 id: event_page
-                eventTitle: eventData['title'].charAt(0).toUpperCase() + eventData['title'].slice(1)
-                eventDescription: eventData['body_text']
+                compilationTitle: compilationData['title'].charAt(0).toUpperCase() + compilationData['title'].slice(1)
+                compilationDescription: compilationData['description']
             }
         }
     }

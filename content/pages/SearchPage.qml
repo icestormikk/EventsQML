@@ -7,7 +7,8 @@ import '../components'
 
 Page {
     id: search_page
-    objectName: 'search_page'
+    objectName: Constants.searchPageName
+
     background: Rectangle {
         anchors.fill: parent
         color: 'transparent'
@@ -35,5 +36,11 @@ Page {
         }
     }
 
-    EventsList {}
+    EventsList {
+        anchors.leftMargin: 10
+        anchors.rightMargin: 10
+
+        events: EventsStore.events.items
+        nextPageLink: EventsStore.next
+    }
 }

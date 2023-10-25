@@ -5,6 +5,7 @@ import QtQuick 6.2
 import ProjectSamples
 import QtQuick.Controls
 import './components/search_widget'
+import './components/footer'
 import './components/'
 import './pages'
 import './storage'
@@ -15,6 +16,8 @@ ApplicationWindow {
     EventsDatabaseService {
         id: events_service
     }
+
+    property alias isFooterVisible: footer.visible
 
     width: Constants.width
     height: Constants.height
@@ -31,8 +34,17 @@ ApplicationWindow {
 
     StackView {
         id: pages_stack
-        anchors.fill: parent
-        initialItem: SearchPage {}
+        width: parent.width
+        height: parent.height
+        initialItem: HomePage {}
+
+        onCurrentItemChanged: {
+            isFooterVisible = ![Constants.eventPageName, Constants.compilationPageName].includes(currentItem.objectName)
+        }
+    }
+
+    footer: Footer {
+        id: footer
     }
 
     CustomPopup {

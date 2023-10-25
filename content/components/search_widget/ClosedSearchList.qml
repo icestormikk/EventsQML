@@ -4,7 +4,9 @@ import '../../ui'
 
 Rectangle {
     id: search_list_short
+
     required property var onClick
+    property var totalEventsCount: EventsStore.events.totalCount
 
     color: 'white'
     anchors.fill: parent
@@ -21,7 +23,7 @@ Rectangle {
         font {
             pointSize: 12
         }
-        text: 'Найти подходящие события'
+        text: (totalEventsCount === 0) ? 'Найти подходящие события' : `Найдено ${totalEventsCount} событий`
         opacity: 0.4
     }
 

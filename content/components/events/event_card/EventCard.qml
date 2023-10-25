@@ -42,20 +42,25 @@ Item {
                 right: parent.right
             }
 
-            property bool isFavouriteEvent: Boolean(events_service.getEventById(eventData['id']))
+            property bool isFavouriteEvent: Boolean(events_service.getFavouriteEventById(eventData['id']))
 
             size: 40
-            url: Constants.getIcon('Favourite' + (isFavouriteEvent ? '_Selected' : ''), false)
+            url: Constants.getIcon('Favourite' + (isFavouriteEvent ? '_Colored' : ''), false)
             bgColor: Qt.rgba(255, 255, 255, 0.5)
             radius: 4
 
             onButtonClicked: () => {
-                try {
-                    events_service.createEvent(eventData)
-                    isFavouriteEvent = true
-                } catch (err) {
+                if (isFavouriteEvent) {
+                    events_service.removeFavouriteEventById(eventData['id'])
                     isFavouriteEvent = false
-                    throw err
+                } else {
+                    try {
+                        events_service.createFavouriteEvent(eventData)
+                        isFavouriteEvent = true
+                    } catch (err) {
+                        isFavouriteEvent = false
+                        throw err
+                    }
                 }
             }
         }
