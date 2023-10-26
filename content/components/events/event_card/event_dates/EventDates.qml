@@ -9,6 +9,11 @@ Page {
     id: event_schedule
     objectName: 'eventSchedule'
 
+    background: Rectangle {
+        anchors.fill: parent
+        color: 'transparent'
+    }
+
     required property var eventDates
 
     ListView {
@@ -48,7 +53,7 @@ Page {
                     id: date_icon
                     anchors.verticalCenter: parent.verticalCenter
 
-                    iconUrl: Constants.getIcon('Time', false)
+                    iconUrl: Constants.getIcon('Time')
                     width: 25
                     height: 25
                 }
@@ -59,6 +64,7 @@ Page {
                     text: `<b>С</b> ${getFormatedDateTime(new Date(modelData['start'] * 1000))} <b>до</b> ${getFormatedDateTime(new Date(modelData['end'] * 1000))}`
                     wrapMode: Text.WordWrap
                     width: parent.width - parent.spacing
+                    color: Constants.secondaryColor
                 }
             }
 

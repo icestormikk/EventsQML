@@ -8,7 +8,7 @@ Rectangle {
     required property var onClick
     property var totalEventsCount: EventsStore.events.totalCount
 
-    color: 'white'
+    color: Constants.mainColor
     anchors.fill: parent
     radius: 40
 
@@ -23,12 +23,13 @@ Rectangle {
         font {
             pointSize: 12
         }
+        color: Constants.secondaryColor
         text: (totalEventsCount === 0) ? 'Найти подходящие события' : `Найдено ${totalEventsCount} событий`
         opacity: 0.4
     }
 
     Icon {
-        iconUrl: Constants.getIcon('Search', false)
+        iconUrl: Constants.getIcon('Search')
         opacity: 0.4
         anchors {
             right: parent.right

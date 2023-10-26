@@ -40,6 +40,7 @@ Item {
                 bold: true
                 pointSize: 12
             }
+            color: Constants.secondaryColor
         }
         Label {
             id: collection_description
@@ -47,6 +48,7 @@ Item {
             font {
                 pointSize: 10
             }
+            color: Constants.secondaryColor
             opacity: 0.5
             width: parent.width
             wrapMode: Text.WordWrap

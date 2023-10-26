@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls
+import ProjectSamples
 import '../../../../services/helpers/date_helpers.js' as DateTools
 
 Item {
@@ -30,6 +31,7 @@ Item {
                 text: `<b>${modelData['day']}: </b><span>${modelData['times'].join(', ')}</span>`
                 wrapMode: Text.WordWrap
                 width: schedules.width
+                color: Constants.secondaryColor
             }
         }
     }

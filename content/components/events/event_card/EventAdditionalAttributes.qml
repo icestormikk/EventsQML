@@ -9,6 +9,11 @@ Page {
 
     property var selectedEventData: EventsStore.selectedEvent
 
+    background: Rectangle {
+        anchors.fill: parent
+        color: 'transparent'
+    }
+
     function getStaticAdditionalAttributes() {
         if (!selectedEventData) {
             return []
@@ -18,19 +23,19 @@ Page {
             {
                 id: 'price',
                 title: 'Стоимость',
-                icon: Constants.getIcon('Cost', false),
+                icon: Constants.getIcon('Cost'),
                 value: selectedEventData['price'] || 'Бесплатно'
             },
             {
                 id: 'age',
                 title: 'Возрастное органичение',
-                icon: Constants.getIcon('Age', false),
+                icon: Constants.getIcon('Age'),
                 value: selectedEventData['age_restriction'] || 0
             },
             {
                 id: 'site',
                 title: 'Ссылка на сайт',
-                icon: Constants.getIcon('Link', false),
+                icon: Constants.getIcon('Link'),
                 value: selectedEventData['site_url'] || 'Отсутствует'
             }
         ]
@@ -79,6 +84,7 @@ Page {
                             width: parent.width
                             wrapMode: Text.WordWrap
                             onLinkActivated: Qt.openUrlExternally(link)
+                            color: Constants.secondaryColor
                         }
                     }
                 }

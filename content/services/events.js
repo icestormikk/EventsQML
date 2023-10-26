@@ -1,23 +1,30 @@
 .import "index.js" as API_TOOLS
 .import ProjectSamples as Stores
 
-function getEvents(parametersObj) {
-    const loc = parametersObj['location'].value.slug
+function getEvents() {
+    const parametersObj = Stores.EventsStore.events.filterParameters
+
+    const location = parametersObj['location'].value.slug
     const actual_since = parametersObj['actual_since'].value.toISOString()
     const category = parametersObj['category'].value.slug
     const title = parametersObj['title'].value
     const fields = 'id,title,slug,is_free,short_title'
 
-    const query = API_TOOLS.buildQueryParametersString({loc, actual_since, category, title, fields})
+    const query = API_TOOLS.buildQueryParametersString({actual_since, location, category, fields})
 
     Stores.EventsStore.events.isLoading = true
 
     API_TOOLS.sendRequest(
-        `events/${query}`,
+        title.length === 0 ? `events/${query}` : `search/${query}&q=${title}&ctype=event`,
         (response) => {
             const { results, next, previous, count } = response
 
-            Stores.EventsStore.events = { items: results, isLoading: false, totalCount: count }
+            Stores.EventsStore.events = {
+                items: results,
+                isLoading: false,
+                totalCount: count,
+                filterParameters: Stores.EventsStore.events.filterParameters
+            }
             Stores.EventsStore.next = next
             Stores.EventsStore.previous = previous
         }
@@ -65,18 +72,22 @@ function getTodayEvents(onSuccess = () => {}, onFailed = () => {}) {
 }
 
 function appendEvents(linkToNext, onSuccess = () => {}) {
-    const query = linkToNext.slice(linkToNext.lastIndexOf('events'))
+    const query = linkToNext.slice(Math.max(linkToNext.lastIndexOf('events'), linkToNext.lastIndexOf('search')))
 
     Stores.EventsStore.events.isLoading = true
+    console.log('LINK: ' + linkToNext)
+    console.log('QUERY: ' + query)
 
     API_TOOLS.sendRequest(
         query,
         (response) => {
             const { results, next, previous, count } = response
+
             Stores.EventsStore.events = {
                 items: [...Stores.EventsStore.events.items, ...results],
                 isLoading: false,
-                totalCount: count
+                totalCount: count,
+                filterParameters: Stores.EventsStore.events.filterParameters
             }
             Stores.EventsStore.next = next
             Stores.EventsStore.previous = previous

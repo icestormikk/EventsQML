@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls
+import ProjectSamples
 
 ListView {
     id: parameters_block
@@ -26,6 +27,7 @@ ListView {
             font {
                 pointSize: 12
             }
+            color: Constants.secondaryColor
         }
 
         Label {
@@ -39,6 +41,7 @@ ListView {
             font: parameter_name.font
             opacity: 0.6
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+            color: parameter_name.color
         }
 
         background: Rectangle {

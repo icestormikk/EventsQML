@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls
+import ProjectSamples
 
 Label {
     id: day_label
@@ -12,7 +13,7 @@ Label {
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignVCenter
     opacity: model.month === grid.month ? 1 : 0.3
-    color: model.today ? 'green' : (isDateEquals(selectedDate, model.date) ? 'white' : 'black')
+    color: model.today ? 'green' : (isDateEquals(selectedDate, model.date) ? 'white' : Constants.secondaryColor)
     text: calendarId.locale.toString(model.date, "dd")
     font {
         bold: model.today || isEqual(selectedDate, model.date)
@@ -20,13 +21,13 @@ Label {
     }
     background: Rectangle {
         id: day_bg
-        color: isEqual(selectedDate, model.date) ? '#7BE382' : 'transparent'
+        color: isEqual(selectedDate, model.date) ? '#59c260' : 'transparent'
         border {
             width: model.today ? 1 : 0
-            color: '#7BE382'
+            color: '#59c260'
         }
 
-        radius: day_bg.width / 2
+        radius: 4
         clip: true
     }
     required property var model

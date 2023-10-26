@@ -33,6 +33,7 @@ Page {
                 wrapMode: Text.WordWrap
                 width: parent.width
                 elide: "ElideRight"
+                color: Constants.secondaryColor
             }
             Label {
                 id: page_description
@@ -44,6 +45,7 @@ Page {
                 width: parent.width
                 elide: "ElideRight"
                 opacity: 0.5
+                color: page_title.color
             }
 
             Item {

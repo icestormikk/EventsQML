@@ -8,6 +8,7 @@ Rectangle {
     property alias size: control_container.width
     property alias bgColor: control_container.color
     property alias url: image.source
+    property alias isEnabled: control.enabled
 
     property bool isRounded: false
     property var onButtonClicked: () => {}
@@ -16,6 +17,7 @@ Rectangle {
     height: width
     color: 'transparent'
     radius: isRounded ? width / 2 : 0
+    opacity: isEnabled ? 1 : 0.5
 
     Button {
         id: control

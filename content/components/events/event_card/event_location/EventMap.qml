@@ -70,9 +70,12 @@ Item {
             center: QtPositioning.coordinate(
                 coordinates['lat'], coordinates['lon']
             )
-            radius: 10.0
-            color: Qt.rgba(255, 0, 0, 0.2)
-            border.width: 1
+            radius: 8
+            color: 'darkred'
+            border {
+                width: 2
+                color: 'white'
+            }
         }
     }
 }

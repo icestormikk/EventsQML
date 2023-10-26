@@ -12,7 +12,8 @@ Rectangle {
     property alias description: search_item_description.text
 
     required property Component content
-    property var onSubmit
+
+    color: Constants.mainColor
 
     ScrollView {
         id: item_view
@@ -52,7 +53,6 @@ Rectangle {
 
                 ItemTitle {
                     id: search_item_title
-                    textColor: 'black'
                     textPointSize: 20
                 }
 
@@ -67,24 +67,6 @@ Rectangle {
                     width: parent.width
                     height: content.height
                     sourceComponent: content
-                }
-            }
-        }
-
-        Row {
-            width: parent.width
-            height: 40
-            anchors {
-                bottom: parent.bottom
-                horizontalCenter: parent.horizontalCenter
-            }
-
-            AcceptButton {
-                onClicked: {
-                    search_list.incrementCurrentIndex()
-                    if (onSubmit) {
-                        onSubmit()
-                    }
                 }
             }
         }

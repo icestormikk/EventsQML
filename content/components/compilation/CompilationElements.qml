@@ -11,6 +11,11 @@ Page {
     width: parent.width
     height: parent.height
 
+    background: Rectangle {
+        anchors.fill: parent
+        color: 'transparent'
+    }
+
     required property var compilationItems
 
     ScrollView {
@@ -31,10 +36,11 @@ Page {
                     width: parent.width
                     height: childrenRect.height
                     radius: 4
+                    color: Constants.mainColor
 
                     border {
-                        width: 1
-                        color: 'lightgray'
+                        width: Constants.activeTheme ? 1 : 0
+                        color: 'gray'
                     }
 
                     function getElementImage() {
@@ -53,13 +59,13 @@ Page {
                                 case 'event':
                                     return Constants.getIcon('Ticket', false)
                                 case 'news':
-                                    return Constants.getIcon('News_Black', false)
+                                    return Constants.getIcon('News_Black')
                                 case 'place':
-                                    return Constants.getIcon('Map', false)
+                                    return Constants.getIcon('Map')
                                 case 'list':
-                                    return Constants.getIcon('List', false)
+                                    return Constants.getIcon('List')
                                 default:
-                                    return Constants.getIcon('None', false)
+                                    return Constants.getIcon('None')
                             }
                         } catch (err) {
                             return Constants.getIcon('None', false)
@@ -74,6 +80,14 @@ Page {
                             anchors.horizontalCenter: parent.horizontalCenter
                             width: parent.width - compilation_item.border.width * 2
                             fillMode: Image.PreserveAspectCrop
+
+                            BusyIndicator {
+                                anchors {
+                                    fill: parent
+                                    margins: 20
+                                }
+                                running: element_image.status === Image.Loading
+                            }
 
                             states: [
                                 State {
@@ -121,6 +135,7 @@ Page {
                                         }
                                         width: parent.width
                                         wrapMode: Text.WordWrap
+                                        color: Constants.secondaryColor
                                     }
                                 }
                             }

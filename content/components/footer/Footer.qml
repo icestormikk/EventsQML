@@ -8,6 +8,7 @@ Rectangle {
     z: 0
     width: parent.width
     height: 60
+    color: Constants.mainColor
 
     radius: 40
 
@@ -16,6 +17,7 @@ Rectangle {
         y: parent.height / 2
         height: parent.height / 2
         width: parent.width
+        color: Constants.mainColor
     }
 
     Item {

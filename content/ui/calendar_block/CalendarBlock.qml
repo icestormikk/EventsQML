@@ -6,7 +6,8 @@ import '..'
 
 ColumnLayout {
     id: calendar_block
-    property var selectedDate: new Date(0)
+
+    property var selectedDate: new Date()
 
     function isEqual(firstDate, secondDate) {
         return firstDate.getTime() === secondDate.getTime()
@@ -19,6 +20,19 @@ ColumnLayout {
     DayOfWeekRow {
         locale: grid.locale
         Layout.fillWidth: true
+        delegate: Text {
+            text: shortName
+            font {
+                bold: true
+                pointSize: 12
+            }
+
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            color: Constants.secondaryColor
+
+            required property string shortName
+        }
     }
 
     MonthGrid {
@@ -32,24 +46,6 @@ ColumnLayout {
         delegate: CalendarDelegate {
             calendarId: grid
             isDateEquals: isEqual
-        }
-    }
-
-    Item {
-        width: parent.width
-        height: selected_date_info.height
-        visible: !isEqual(selectedDate, new Date(0))
-
-        Text {
-            id: selected_date_info
-            anchors.centerIn: parent
-            text: selectedDate.toLocaleDateString(Qt.locale('ru_RU'))
-            font {
-                bold: true
-                pointSize: 12
-            }
-            color: 'green'
-            wrapMode: Text.WordWrap
         }
     }
 }

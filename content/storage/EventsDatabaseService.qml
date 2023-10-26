@@ -27,7 +27,7 @@ QtObject {
     }
 
     function updateFavouriteEventById(id, newObj) {
-        const result = repository.update(eventsTableName, newObj, 'event_id = ?', id)
+        const result = repository.update(eventsTableName, JSON.stringify(newObj), 'event_id = ?', id)
 
         getAllFavouriteEvents()
         return result

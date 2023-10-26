@@ -5,7 +5,7 @@ import ProjectSamples
 Rectangle {
     id: content_block
 
-    color: 'white'
+    color: Constants.mainColor
     clip: true
 
     Column {
@@ -68,7 +68,8 @@ Rectangle {
                         bold: true
                         pointSize: 12
                     }
-                    color: ListView.isCurrentItem ? "black" : Qt.rgba(0, 0, 0, 0.5)
+                    color: Constants.secondaryColor
+                    opacity: ListView.isCurrentItem ? 1 : 0.5
 
                     MouseArea {
                         anchors.fill: parent
@@ -98,6 +99,6 @@ Rectangle {
         y: parent.height / 2
         height: parent.height / 2
         width: parent.width
-        color: 'white'
+        color: Constants.mainColor
     }
 }

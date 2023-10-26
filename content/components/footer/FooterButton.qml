@@ -31,6 +31,7 @@ Item {
                 bold: true
                 pointSize: 10
             }
+            color: Constants.secondaryColor
         }
     }
 

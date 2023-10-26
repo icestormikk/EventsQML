@@ -7,6 +7,7 @@ QtObject {
         property int totalCount: 0
         property var items: []
         property var favouriteItems: []
+        property var filterParameters
     }
 
     property var next

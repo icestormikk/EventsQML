@@ -32,12 +32,25 @@
         <file>icons/Cost.svg</file>
         <file>icons/Link.svg</file>
         <file>icons/KudaGoLogo.svg</file>
-        <file>icons/News.svg</file>
         <file>icons/Today.svg</file>
         <file>icons/Group.svg</file>
         <file>icons/Favourite_Colored.svg</file>
         <file>icons/WideLogo.png</file>
         <file>icons/News_Black.svg</file>
         <file>icons/None.svg</file>
+        <file>icons/Credits.svg</file>
+        <file>icons/Credits_Dark.svg</file>
+        <file>icons/Cat.svg</file>
+        <file>icons/Code.svg</file>
+        <file>icons/GraphicDesign.svg</file>
+        <file>icons/Qt.svg</file>
+        <file>icons/DarkMode.svg</file>
+        <file>icons/LightMode.svg</file>
+        <file>icons/Age_Dark.svg</file>
+        <file>icons/Cost_Dark.svg</file>
+        <file>icons/Link_Dark.svg</file>
+        <file>icons/News_Colored.svg</file>
+        <file>icons/News.svg</file>
+        <file>icons/News_Dark.svg</file>
     </qresource>
 </RCC>

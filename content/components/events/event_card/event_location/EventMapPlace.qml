@@ -9,6 +9,11 @@ Page {
     id: event_place_info_page
     objectName: 'eventPlaceMap'
 
+    background: Rectangle {
+        anchors.fill: parent
+        color: 'transparent'
+    }
+
     required property var eventLocationData
 
     function isPlaceDefined() {
@@ -35,10 +40,11 @@ Page {
             height: 80
             border {
                 width: 1
-                color: 'lightgray'
+                color: Constants.activeTheme ? 'gray' : 'lightgray'
             }
             radius: 4
             clip: true
+            color: Constants.mainColor
 
             Row {
                 anchors {
@@ -52,7 +58,7 @@ Page {
                     anchors.verticalCenter: parent.verticalCenter
                     width: 40
                     height: width
-                    iconUrl: Constants.getIcon('Map', false)
+                    iconUrl: Constants.getIcon('Map')
                 }
 
                 Column {
@@ -70,6 +76,7 @@ Page {
                             bold: true
                             pointSize: 12
                         }
+                        color: Constants.secondaryColor
                     }
 
                     Label {
@@ -82,6 +89,7 @@ Page {
                             pointSize: location_name.font.pointSize * 0.8
                         }
                         wrapMode: Text.WordWrap
+                        color: location_name.color
                         opacity: 0.5
                     }
 

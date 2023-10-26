@@ -1,9 +1,15 @@
 import QtQuick 2.15
 import QtQuick.Controls
+import ProjectSamples
 
 Page {
     id: compilation_info_page
     objectName: 'compilationInfoPage'
+
+    background: Rectangle {
+        anchors.fill: parent
+        color: 'transparent'
+    }
 
     required property string compilationTitle
     required property string compilationDescription
@@ -43,6 +49,7 @@ Page {
                         pointSize: 14
                     }
                     wrapMode: Text.WordWrap
+                    color: Constants.secondaryColor
                 }
             }
 
@@ -53,6 +60,7 @@ Page {
                 font.pointSize: 10
                 width: compilation_content.width
                 wrapMode: Text.WordWrap
+                color: title.color
             }
         }
     }

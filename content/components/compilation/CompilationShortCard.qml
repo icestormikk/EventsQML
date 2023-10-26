@@ -7,7 +7,7 @@ Rectangle {
     width: parent.width
     height: Math.max(compilation_icon.height, title.height) + compilation_block.anchors.margins * 2
 
-    color: 'white'
+    color: Constants.mainColor
     radius: 6
     clip: true
 
@@ -31,12 +31,12 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             text: modelData['title'].charAt(0).toUpperCase() + modelData['title'].slice(1)
             font {
-                bold: true
                 pointSize: 11
             }
             wrapMode: Text.WordWrap
             elide: Text.ElideRight
             width: compilation_block.width - compilation_icon.width - compilation_block.anchors.margins * 2
+            color: Constants.secondaryColor
         }
     }
 

@@ -43,6 +43,7 @@ Item {
             pointSize: 12
         }
         opacity: 0.5
+        color: Constants.secondaryColor
     }
 
     IconButton {
@@ -55,7 +56,6 @@ Item {
 
         url: Constants.getIcon('Next')
         onButtonClicked: () => {
-            console.log('test')
             if (calendarId.month === Calendar.December) {
                 calendarId.month = Calendar.January
                 calendarId.year += 1

@@ -10,7 +10,7 @@ Rectangle {
         right: parent.right
     }
     height: news_info_container.height + 10
-    color: 'white'
+    color: Constants.mainColor
     radius: 6
 
     Column {
@@ -38,6 +38,7 @@ Rectangle {
                 }
                 wrapMode: Text.WordWrap
                 width: parent.width
+                color: Constants.secondaryColor
             }
             Label {
                 id: news_description
@@ -49,6 +50,7 @@ Rectangle {
                 wrapMode: Text.WordWrap
                 elide: "ElideRight"
                 width: parent.width
+                color: news_title.color
             }
         }
     }

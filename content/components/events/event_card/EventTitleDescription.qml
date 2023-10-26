@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls
+import ProjectSamples
 
 Page {
     id: event_main_info_page
@@ -7,6 +8,11 @@ Page {
 
     required property string eventTitle
     required property string eventDescription
+
+    background: Rectangle {
+        anchors.fill: parent
+        color: 'transparent'
+    }
 
     ScrollView {
         anchors {
@@ -43,6 +49,7 @@ Page {
                         pointSize: 14
                     }
                     wrapMode: Text.WordWrap
+                    color: Constants.secondaryColor
                 }
             }
 
@@ -53,6 +60,7 @@ Page {
                 font.pointSize: 10
                 width: event_content.width
                 wrapMode: Text.WordWrap
+                color: event_title.color
             }
         }
     }

@@ -1,11 +1,11 @@
 import QtQuick 2.15
+import ProjectSamples
 
 Item {
     id: item_title
 
     property alias text: title.text
     property alias textPointSize: title.font.pointSize
-    property alias textColor: title.color
 
     width: parent.width
     height: title.height
@@ -14,7 +14,7 @@ Item {
         id: title
         anchors.centerIn: parent
 
-        color: 'black'
+        color: Constants.secondaryColor
         font {
             bold: true
             pointSize: 20

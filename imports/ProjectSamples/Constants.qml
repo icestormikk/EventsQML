@@ -12,11 +12,11 @@ QtObject {
 
     property int activeTheme : Constants.Theme.Light
 
-    readonly property color mainColor : activeTheme ? "#09102B" : "lightgray"
+    readonly property color mainColor : activeTheme ? "#1F1B24" : "#FFFFFF"
     readonly property color mainSelectionColor: activeTheme ? "#1aaad7" : "#1aaad7"
-    readonly property color secondaryColor : activeTheme ? "#FFFFFF" : "#09102B"
+    readonly property color secondaryColor : activeTheme ? "#EFEFEF" : "#09102B"
 
-    readonly property color applicationBackgroundColor: '#B3DCFD'
+    readonly property color applicationBackgroundColor: activeTheme ? '#121212' : '#B3DCFD'
 
     readonly property string homePageName: 'homePage'
     readonly property string searchPageName: 'searchPage'

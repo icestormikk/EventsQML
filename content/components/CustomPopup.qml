@@ -30,7 +30,7 @@ Popup {
         }
         height: content_loader.height + modal_header.height + anchors.leftMargin * 2
 
-        color: 'white'
+        color: Constants.mainColor
         radius: 6
 
         Column {
@@ -54,6 +54,7 @@ Popup {
                         bold: true
                         pointSize: 12
                     }
+                    color: Constants.secondaryColor
                 }
 
                 IconButton {
@@ -63,7 +64,7 @@ Popup {
                         verticalCenter: parent.verticalCenter
                     }
                     size: Math.max(parent.height - 5, 30)
-                    url: Constants.getIcon('Close', false)
+                    url: Constants.getIcon('Close')
 
                     onButtonClicked: () => {
                         popup_window.close()

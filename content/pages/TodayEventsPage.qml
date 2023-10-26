@@ -47,7 +47,7 @@ Page {
                     Icon {
                         height: parent.height
                         width: height
-                        iconUrl: Constants.getIcon('Today')
+                        iconUrl: Constants.getIcon('Today', false)
                         iconMargins: 10
                     }
                 }
@@ -64,6 +64,7 @@ Page {
                             bold: true
                             pointSize: 16
                         }
+                        color: Constants.secondaryColor
                     }
                     Label {
                         id: today_events_description
@@ -75,6 +76,7 @@ Page {
                         width: parent.width
                         wrapMode: Text.WordWrap
                         elide: "ElideRight"
+                        color: today_events_title.color
                     }
                 }
             }

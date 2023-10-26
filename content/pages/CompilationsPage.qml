@@ -40,14 +40,14 @@ Page {
                     clip: true
                     color: '#f2f0b6'
                     border {
-                        width: 1
+                        width: Constants.activeTheme ? 0 : 1
                         color: 'lightgray'
                     }
 
                     Icon {
                         height: parent.height
                         width: height
-                        iconUrl: Constants.getIcon('Group')
+                        iconUrl: Constants.getIcon('Group', false)
                         iconMargins: 10
                     }
                 }
@@ -64,6 +64,7 @@ Page {
                             bold: true
                             pointSize: 16
                         }
+                        color: Constants.secondaryColor
                     }
                     Label {
                         id: today_events_description
@@ -75,6 +76,7 @@ Page {
                         width: parent.width - 5
                         wrapMode: Text.WordWrap
                         elide: "ElideRight"
+                        color: today_events_title.color
                     }
                 }
             }

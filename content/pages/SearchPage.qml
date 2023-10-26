@@ -27,6 +27,7 @@ Page {
 
             onClick: () => {
                 popup_window.content = Qt.resolvedUrl('../components/search_widget/SearchWidget.qml')
+                popup_window.modalTitle = 'Поиск событий'
                 popup_window.open()
             }
         }

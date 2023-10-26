@@ -20,7 +20,7 @@ Item {
             {
                 title: 'Новости',
                 description: 'Вести об интересных местах и событиях',
-                image: 'News',
+                image: 'News_Colored',
                 bgColor: 'white',
                 pageAddress: Qt.resolvedUrl('../../pages/NewsPage.qml')
             },
@@ -66,7 +66,7 @@ Item {
             id: collections_rect
             width: home_page_section.width - parent.anchors.margins * 2
             height: parent.height + 45
-            color: Qt.rgba(255, 255, 255, 0.5)
+            color: Qt.rgba(255, 255, 255, Constants.activeTheme ? 0.1 : 0.5)
             radius: 10
             clip: true
 
@@ -94,6 +94,7 @@ Item {
                             weight: 800
                             pointSize: 14
                         }
+                        color: Constants.secondaryColor
                         wrapMode: Text.NoWrap
                         elide: Text.ElideRight
                     }
@@ -124,6 +125,7 @@ Item {
                     leftMargin: 15
                 }
                 text: 'Ваши избранные мероприятия'
+                color: Constants.secondaryColor
                 font: section_title.font
                 wrapMode: section_title.wrapMode
                 elide: section_title.elide
@@ -167,17 +169,20 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
 
                             Label {
+                                id: favourite_label
                                 text: 'Избранное'
                                 font {
                                     bold: true
                                     pointSize: 12
                                 }
+                                color: Constants.secondaryColor
                             }
                             Label {
                                 text: getFavouriteEventsLabel()
                                 font {
                                     pointSize: 10
                                 }
+                                color: favourite_label.color
                             }
                         }
                     }

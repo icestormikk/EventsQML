@@ -40,14 +40,14 @@ Page {
                     clip: true
                     color: 'white'
                     border {
-                        width: 1
+                        width: Constants.activeTheme ? 0 : 1
                         color: 'lightgray'
                     }
 
                     Icon {
                         height: parent.height
                         width: height
-                        iconUrl: Constants.getIcon('News')
+                        iconUrl: Constants.getIcon('News_Colored', false)
                         iconMargins: 10
                     }
                 }
@@ -65,6 +65,7 @@ Page {
                             pointSize: 16
                         }
                         width: parent.width - 10
+                        color: Constants.secondaryColor
                     }
                     Label {
                         id: today_events_description
@@ -76,6 +77,7 @@ Page {
                         width: today_events_title.width
                         wrapMode: Text.WordWrap
                         elide: "ElideRight"
+                        color: today_events_title.color
                     }
                 }
             }

@@ -1,4 +1,5 @@
 import QtQuick 2.15
+import ProjectSamples
 
 Text {
     id: search_item_description
@@ -8,7 +9,7 @@ Text {
     property alias description: search_item_description.text
 
     width: container.width
-    color: search_item_description.color
+    color: Constants.secondaryColor
     opacity: 0.5
     font {
         pointSize: 14

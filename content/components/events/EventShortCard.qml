@@ -7,7 +7,7 @@ Rectangle {
     id: event_short_info
     width: events_list.width
     height: Math.max(title.height + event_publication_date.height + info_row_block.anchors.margins * 2, event_icon.height)
-    color: 'white'
+    color: Constants.mainColor
     radius: 6
     clip: true
 
@@ -42,6 +42,7 @@ Rectangle {
                 wrapMode: Text.WordWrap
                 elide: Text.ElideRight
                 width: event_info.width - info_row_block.anchors.margins * 2
+                color: Constants.secondaryColor
             }
             Text {
                 id: event_publication_date
@@ -53,6 +54,7 @@ Rectangle {
                 wrapMode: modelData['short_title'] ? title.wrapMode : Text.NoWrap
                 elide: title.elide
                 width: title.width - 10
+                color: title.color
             }
         }
     }
@@ -69,7 +71,7 @@ Rectangle {
                 EventsTools.getEventById(
                     modelData['id'],
                     (response) => {
-                        events_service.updateFavouriteEventById(modelData['id'], { data: JSON.stringify(response) })
+                        events_service.updateFavouriteEventById(modelData['id'], response)
                     }
                 )
                 return
