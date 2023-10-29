@@ -21,7 +21,6 @@ Button {
 
         Row {
             anchors.centerIn: parent
-            spacing: 10
 
             BusyIndicator {
                 visible: isLoading

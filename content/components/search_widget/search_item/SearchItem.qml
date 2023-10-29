@@ -30,44 +30,22 @@ Rectangle {
             }
             spacing: 10
 
-            Item {
-                width: parent.width
-                height: 40
-
-                PreviousItemButton {
-                    anchors {
-                        left: parent.left
-                        verticalCenter: parent.verticalCenter
-                    }
-
-                    visible: search_list.currentIndex > 0
-                    onClicked: {
-                        search_list.decrementCurrentIndex()
-                    }
-                }
+            ItemTitle {
+                id: search_item_title
+                textPointSize: 20
             }
 
-            Column {
+            ItemDescription {
+                id: search_item_description
+                container: search_item_container
+                textPointSize: search_item_title.textPointSize * 0.6
+            }
+
+            Loader {
+                id: content_loader
                 width: parent.width
-                spacing: 10
-
-                ItemTitle {
-                    id: search_item_title
-                    textPointSize: 20
-                }
-
-                ItemDescription {
-                    id: search_item_description
-                    container: search_item_container
-                    textPointSize: search_item_title.textPointSize * 0.6
-                }
-
-                Loader {
-                    id: content_loader
-                    width: parent.width
-                    height: content.height
-                    sourceComponent: content
-                }
+                height: content.height
+                sourceComponent: content
             }
         }
     }

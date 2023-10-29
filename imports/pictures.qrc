@@ -36,11 +36,7 @@
         <file>icons/Group.svg</file>
         <file>icons/Favourite_Colored.svg</file>
         <file>icons/WideLogo.png</file>
-        <file>icons/News_Black.svg</file>
         <file>icons/None.svg</file>
-        <file>icons/Credits.svg</file>
-        <file>icons/Credits_Dark.svg</file>
-        <file>icons/Cat.svg</file>
         <file>icons/Code.svg</file>
         <file>icons/GraphicDesign.svg</file>
         <file>icons/Qt.svg</file>
@@ -52,5 +48,8 @@
         <file>icons/News_Colored.svg</file>
         <file>icons/News.svg</file>
         <file>icons/News_Dark.svg</file>
+        <file>icons/About.svg</file>
+        <file>icons/Designer.svg</file>
+        <file>icons/Programmer.svg</file>
     </qresource>
 </RCC>

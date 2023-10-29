@@ -34,7 +34,7 @@ function getEvents() {
 function getEventById(id, onSuccess = () => {}, onFailed = () => {}) {
     const lang = 'ru'
     const expand = 'images,dates,location,place'
-    const text_format = 'plain'
+    const text_format = 'text'
 
     const query = API_TOOLS.buildQueryParametersString({lang, expand, text_format})
 

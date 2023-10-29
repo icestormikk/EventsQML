@@ -50,6 +50,9 @@ Page {
                     }
                     wrapMode: Text.WordWrap
                     color: Constants.secondaryColor
+                    onLinkActivated: (link) => {
+                        Qt.openUrlExternally(link)
+                    }
                 }
             }
 

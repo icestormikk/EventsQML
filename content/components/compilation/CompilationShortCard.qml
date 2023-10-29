@@ -31,6 +31,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             text: modelData['title'].charAt(0).toUpperCase() + modelData['title'].slice(1)
             font {
+                bold: true
                 pointSize: 11
             }
             wrapMode: Text.WordWrap

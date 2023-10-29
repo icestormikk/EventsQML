@@ -54,12 +54,21 @@ QtObject {
         return event
     }
 
-    function create(tableName, obj) {
+    function create(tableName, obj, isJson = false) {
         if (!connection) {
             throw new Error('Database is not initialized!')
         }
 
-        const [keys, values] = [Object.keys(obj), Object.values(obj)]
+        const [keys, values] = [
+            Object.keys(obj),
+            Object.values(obj)
+                .map((value) => {
+                    if (typeof value === 'object') {
+                        return `json(${JSON.stringify(value)})`
+                    }
+                    return `${value}`
+                })
+        ]
         connection.database.transaction(
             function (tx) {
                 const query = `INSERT INTO ${tableName} (${keys.join(', ')}) VALUES (${Array(values.length).fill('?').join(', ')})`
@@ -81,7 +90,15 @@ QtObject {
 
         connection.database.transaction(
             function (tx) {
-                const newValues = Object.entries(newObj).map(([key, value]) => `${key}=${value}`)
+                const newValues = Object
+                    .entries(newObj)
+                    .map(([key, value]) => {
+                        if (typeof value === 'object') {
+                            return `${key} = json('${JSON.stringify(value)}')`
+                        }
+
+                        return `${key}=${value}`
+                    })
                 const query = `UPDATE ${tableName} SET ${newValues} WHERE ${filterQueryString}`
                 logger.write(query + ` (${parameters.join(', ')})`)
 

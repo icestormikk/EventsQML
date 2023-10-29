@@ -71,7 +71,7 @@ Rectangle {
                 EventsTools.getEventById(
                     modelData['id'],
                     (response) => {
-                        events_service.updateFavouriteEventById(modelData['id'], response)
+                        events_service.updateFavouriteEventById(modelData['id'], {data: response})
                     }
                 )
                 return

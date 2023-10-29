@@ -17,8 +17,8 @@ Page {
         width: parent.width
         height: 50
 
-        IconButton {
-            id: switch_theme_button
+        Item {
+            id: switch_theme_buttons
             height: parent.height
             width: height
             anchors {
@@ -28,11 +28,64 @@ Page {
                 topMargin: 4
             }
 
-            url: Constants.getIcon(Constants.activeTheme ? 'LightMode' : 'DarkMode', false)
-            onButtonClicked: () => {
-                Constants.activeTheme = Constants.activeTheme ? Constants.Theme.Light : Constants.Theme.Dark
-                console.log(Constants.activeTheme)
+            IconButton {
+                id: light_theme_button
+                height: parent.height
+                width: height
+                x: parent.width / 2
+
+                url: Constants.getIcon('LightMode', false)
+                onButtonClicked: () => {
+                    Constants.activeTheme = Constants.Theme.Dark
+                }
+
+                Behavior on x {
+                    NumberAnimation { duration: 200 }
+                }
             }
+
+            IconButton {
+                id: dark_theme_button
+                height: parent.height
+                width: height
+                x: parent.width / -2
+
+                url: Constants.getIcon('DarkMode', false)
+                onButtonClicked: () => {
+                    Constants.activeTheme = Constants.Theme.Light
+                }
+
+                Behavior on x {
+                    NumberAnimation { duration: 200 }
+                }
+            }
+
+            states: [
+                State {
+                    name: "isLightMode"
+                    when: Constants.activeTheme === Constants.Theme.Light
+                    PropertyChanges {
+                        target: light_theme_button
+                        x: 0
+                    }
+                    PropertyChanges {
+                        target: dark_theme_button
+                        x: -switch_theme_buttons.width
+                    }
+                },
+                State {
+                    name: "isDarkMode"
+                    when: Constants.activeTheme === Constants.Theme.Dark
+                    PropertyChanges {
+                        target: light_theme_button
+                        x: -switch_theme_buttons.width
+                    }
+                    PropertyChanges {
+                        target: dark_theme_button
+                        x: 0
+                    }
+                }
+            ]
         }
 
         IconButton {
@@ -41,14 +94,14 @@ Page {
             anchors {
                 right: parent.right
                 top: parent.top
-                rightMargin: switch_theme_button.anchors.leftMargin
-                topMargin: switch_theme_button.anchors.topMargin
+                rightMargin: switch_theme_buttons.anchors.leftMargin
+                topMargin: switch_theme_buttons.anchors.topMargin
             }
 
-            url: Constants.getIcon('Credits_Dark', false)
+            url: Constants.getIcon('About', false)
             onButtonClicked: () => {
-               popup_window.modalTitle = 'Authors'
-               popup_window.content = '../components/Credits.qml'
+               popup_window.modalTitle = 'О приложении'
+               popup_window.content = '../components/credits/Credits.qml'
                popup_window.open()
             }
         }

@@ -39,8 +39,8 @@ Page {
                     color: Constants.mainColor
 
                     border {
-                        width: Constants.activeTheme ? 1 : 0
-                        color: 'gray'
+                        width: 1
+                        color: Constants.activeTheme ? 'gray' : 'lightgray'
                     }
 
                     function getElementImage() {
